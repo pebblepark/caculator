@@ -322,8 +322,12 @@ export default function DutchPayCalculator() {
                   <h3 className="text-xl font-bold">계산 결과</h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="bg-white bg-opacity-20 rounded-lg p-4">
+                <div
+                  className={`grid gap-4 mb-4 ${
+                    calculation.extraAmount > 0 ? "grid-cols-2" : "grid-cols-1"
+                  }`}
+                >
+                  <div className="bg-white/30 rounded-lg p-4">
                     <div className="text-2xl font-bold mb-1">
                       {formatCurrency(calculation.baseAmount)}원
                     </div>
@@ -333,7 +337,7 @@ export default function DutchPayCalculator() {
                   </div>
 
                   {calculation.extraAmount > 0 && (
-                    <div className="bg-orange-400 bg-opacity-30 rounded-lg p-4">
+                    <div className="bg-orange-400/30 rounded-lg p-4">
                       <div className="text-2xl font-bold mb-1">
                         +{formatCurrency(calculation.extraPerPerson)}원
                       </div>
@@ -345,17 +349,17 @@ export default function DutchPayCalculator() {
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 text-sm">
-                  <div className="bg-white bg-opacity-10 rounded-lg p-3">
+                  <div className="bg-white/30 rounded-lg p-3">
                     <div className="text-green-100">총 금액</div>
                     <div className="font-semibold">
                       {formatCurrency(parseFloat(totalAmount) || 0)}원
                     </div>
                   </div>
-                  <div className="bg-white bg-opacity-10 rounded-lg p-3">
+                  <div className="bg-white/30 rounded-lg p-3">
                     <div className="text-green-100">참여 인원</div>
                     <div className="font-semibold">{selectedCount}명</div>
                   </div>
-                  <div className="bg-white bg-opacity-10 rounded-lg p-3">
+                  <div className="bg-white/30 rounded-lg p-3">
                     <div className="text-green-100">절삭 단위</div>
                     <div className="font-semibold">
                       {getRoundingUnitText(roundingOption)}
@@ -363,7 +367,7 @@ export default function DutchPayCalculator() {
                   </div>
                 </div>
 
-                <div className="mt-4 bg-white bg-opacity-10 rounded-lg p-3">
+                <div className="mt-4 bg-white/30 rounded-lg p-3">
                   <div className="text-sm text-green-100">
                     계산 검증: {formatCurrency(totalCalculated)}원 ={" "}
                     {formatCurrency(parseFloat(totalAmount) || 0)}원
