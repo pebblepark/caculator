@@ -1,5 +1,7 @@
+import DutchPayCalculator from "./pages/DutchPayCaculator";
+
 function App() {
-  return <div className="text-3xl font-bold underline">Hello World</div>;
+  return <DutchPayCalculator />;
 }
 
 export default App;
